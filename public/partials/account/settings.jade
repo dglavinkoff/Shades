@@ -1,0 +1,26 @@
+//
+   Created by DG on 8/8/14.
+.container
+    .row
+        h3 Основна информация
+    .row
+        form.form-horizontal
+            fieldset
+                legend Обновете своята лична информация
+                div.form-group
+                    label.control-label.col-sm-2(for="fullname") Име
+                    .col-sm-10
+                        input.form-control(type="text", id="fullname", ng-model="data.fullname", placeholder="Име")
+                div.form-group
+                    label.control-label.col-sm-2(for="email") Email
+                    .col-sm-10
+                        input.form-control(type="text", id="email", ng-model="data.email", placeholder="Email")
+                div.form-group
+                    label.control-label.col-sm-2(for="bio") Допълнителна информация
+                    .col-sm-10
+                        input.form-control(type="text", id="bio", ng-model="data.bio", placeholder="Напиши нещо за себе си")
+                div.form-group
+                    .col-sm-offset-2
+                        button.btn.btn-primary(type="submit", ng-click="updateProfile()") Обнови
+    .row
+        p(ng-show="successfullyUpdated != undefined") {{successfullyUpdated}}

@@ -1,0 +1,16 @@
+//
+   Created by DG on 10/17/14.
+.panel.panel-default
+    .panel-body
+        div.chat-panel(ng-hide="messages.length > 0")
+            h4 Няма съобщения за показване
+        p(style="max-height: 422px, overflow: scroll")
+            ul(ng-show="messages.length > 0", style="list-style-type: none")
+                li(ng-repeat="message in messages")
+                    div.chat-message(ng-style="determineStyle(message.sender)")
+                        | {{message.text}}
+        form.form-group(style="clear: both" id="message")
+            .input-group
+                input.form.form-control(type="text", ng-model="newMessage")
+                span.input-group-btn
+                    button.btn.btn-default(type="submit", form="message" ng-click="sendMessage(newMessage)") Изпрати

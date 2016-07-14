@@ -1,0 +1,19 @@
+//
+   Created by DG on 8/5/14.
+.col-md-6
+    .well.bs-component
+        form.form-horizontal.form
+            fieldset
+                legend Влез
+                div.form-group
+                    label.col-sm-2.control-label(for="username") Потребителско име
+                    div.col-sm-6
+                        input.form-control.input-sm(type="text", id="username", placeholder="Потребителско име", ng-model="user.username")
+                    div.warning-message(ng-show="wrongUsername") Username does not exist.
+                div.form-group
+                    label.col-sm-2.control-label(for="password") Парола
+                    div.col-sm-6
+                        input.form-control.input-sm(type="password", id="password", placeholder="Парола", ng-model="user.password")
+                    div.warning-message(ng-show="wrongPassword") Wrong password.
+                div.col-sm-10.col-sm-offset-2
+                    button.btn-sm.btn.btn-primary(type="submit", ng-click="signin()") Влез

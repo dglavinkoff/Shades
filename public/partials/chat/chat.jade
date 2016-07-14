@@ -1,0 +1,16 @@
+//
+   Created by DG on 10/17/14.
+div.modal.fade(id="chat", tabindex="-1", role="dialog", aria-hidden="true")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(data-dismiss="modal", ng-click="dismissModal()")
+                    span(aria-hidden="true") &times;
+                    span.sr-only Затвори
+                h4 Чат
+            div.modal-body
+                div(ng-show="!personalChatEnabled", ng-include="'/partials/chat/list'")
+                div(ng-show="!!personalChatEnabled", ng-include="'/partials/chat/personalChat'")
+            div.modal-footer
+                button.btn.btn-default(ng-show="personalChatEnabled", ng-click="back()") Назад
+                button.btn.btn-default(data-dismiss="modal", ng-click="dismissModal()") Затвори

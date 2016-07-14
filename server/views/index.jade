@@ -1,0 +1,48 @@
+extends includes/layout
+block main-content
+		div(ng-controller="AuthController")
+			header.navbar-default.navbar-fixed-top
+				.container
+					.navbar-header
+						a.navbar-brand(href="#/") Shades
+					.navbar-inner
+						ul.nav.navbar-nav
+							li
+								a(href="#/")
+									span(class="glyphicon glyphicon-home")
+							li(ng-show="Authentication.isAuthenticated()")
+								a(href="#/{{Authentication.currentUser.username}}")
+									span(class="glyphicon glyphicon-user") {{" " + "@" + Authentication.currentUser.username}}
+							li.dropdown(ng-show="Authentication.isAuthenticated()", ng-controller="shadesController")
+								a.dropdown-toggle(href="", data-toggle="dropdown")
+									span.glyphicon.glyphicon-eye-open {{" " + shades.currentShades.name}}
+								ul.dropdown-menu
+									li(ng-repeat="s in Authentication.currentUser.shades")
+										a(href="", ng-click="change(s)") {{s.name}}
+									li.divider
+									li
+										a(href="#createShades", role="button", data-toggle="modal") Създай филтър
+							li(ng-show="Authentication.isAuthenticated()", ng-controller="postsController")
+								a(href="#createPost", role="button", data-toggle="modal")
+									span.glyphicon.glyphicon-edit {{" Публикувай"}}
+							li(ng-show="Authentication.isAuthenticated()")
+								a(href="#search", role="button", data-toggle="modal")
+									span(class="glyphicon glyphicon-search") {{" Търси"}} 
+							li(ng-show="Authentication.isAuthenticated()")
+								a(href="#chat", role="button", data-toggle="modal")
+									span(class="glyphicon glyphicon-envelope") {{" Съобщения"}}
+							li.dropdown(ng-show="Authentication.isAuthenticated()")
+								a.dropdown-toggle(href="", data-toggle="dropdown")
+									span(class="glyphicon glyphicon-cog") {{" Настройки"}}
+								ul.dropdown-menu
+									li
+										a(href="#/settings") Настройки
+									li
+										a(href="#" ng-click="signout()") Излез
+
+			section
+				div(ng-view)
+		div(ng-include="'/partials/shades/create'", ng-controller="shadesController")
+		div(ng-include="'/partials/post/create'", ng-controller="postsController")
+		div(ng-include="'/partials/account/search'", ng-controller="profileController")
+		div(ng-include="'/partials/chat/chat'", ng-controller="messageController")

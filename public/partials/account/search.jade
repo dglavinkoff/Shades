@@ -1,0 +1,26 @@
+//
+   Created by DG on 9/17/14.
+div.modal.fade(id="search", tabindex="-1", role="dialog", aria-hidden="true")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(data-dismiss="modal", ng-click="dismissModal()")
+                    span(aria-hidden="true") &times;
+                    span.sr-only Затвори
+                h4 Търси
+                form(id="search")
+                  input.input-sm.form-control(type="text", ng-model="queryString")
+            div.modal-body
+                ul.newsFeedList(ng-if="matched.length > 0")
+                    li(ng-repeat="user in matched")
+                       a(data-dismiss="modal", role="button", ng-click="redirect(user.username)", style="diplay: inline-block")
+                           span(style="margin-left=10px")
+                               h5(style="display: inline") {{user.fullname}}
+                               small {{' @' + user.username}}
+                div(ng-if="noResults == false && matched.length == 0")
+                    h4 Type to search something
+                div(ng-if="noResults == true")
+                    h4 No results found
+            div.modal-footer
+                button.btn.btn-default(data-dismiss="modal", ng-click="dismissModal()") Затвори
+                button.btn.btn-primary(ng-click="search(queryString)") Търси

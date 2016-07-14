@@ -1,0 +1,14 @@
+//
+   Created by DG on 8/10/14.
+.container
+    div(class="jumbotron", ng-hide="Authentication.isAuthenticated()")
+        .row
+            h1 Добре дошли в Shades
+            p Виж света така както искаш!
+    .row
+        div(ng-include="'/partials/account/login'", ng-controller="AuthController", ng-hide="Authentication.isAuthenticated()")
+        div(ng-include="'/partials/account/signup'", ng-controller="AuthController", ng-hide="Authentication.isAuthenticated()")
+
+.container.newsFeed(id="newsFeed", ng-show="Authentication.isAuthenticated()")
+    .row
+        div(ng-include="'/partials/newsFeed/newsFeed'")

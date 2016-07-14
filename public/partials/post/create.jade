@@ -1,0 +1,35 @@
+//
+   Created by DG on 8/17/14.
+
+div.modal.fade(id="createPost", tabindex="-1", role="dialog", aria-hidden="true")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(data-dismiss="modal", ng-click="dismissModal()")
+                    span(aria-hidden="true") &times;
+                    span.sr-only Затвори
+                h4 Публикувай
+            div.modal-body
+                .container
+                    form.form(enctype="multipart/form-data")
+                    fieldset
+                        div.form-group
+                            .row
+                                .col-md-5
+                                    input.form-control(type="textarea", ng-model="textContent")
+                            .row
+                                .col-md-2(style="padding-right: 8px")
+                                    input.photo-input(id="photo", type="file" name="image" ngf-select ng-model="image")
+                                    label(for="photo")
+                                        span.glyphicon.glyphicon-picture {{ " Добави снимка" }}
+                                    div(ng-hide="!image") Снимката е избрана
+                                .col-md-2(style="padding-right: 8px")
+                                    input.photo-input(id="video", type="file" name="video" ngf-select ng-model="video")
+                                    label(for="video")
+                                        span.glyphicon.glyphicon-picture {{ " Добави видео" }}
+                                    div(ng-hide="!video") Видеото е избрано
+                            .row
+                                h3(ng-show="wait == true") Моля изчакайте
+            div.modal-footer
+                button.btn.btn-default(data-dismiss="modal", ng-click="dismissModal()") Затвори
+                button.btn.btn-primary(ng-click="createPost(textContent, image, video)") Публикувай

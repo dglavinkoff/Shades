@@ -1,0 +1,45 @@
+//
+   Created by DG on 8/14/14.
+div.modal.fade(id="createShades", tabindex="-1", role="dialog", aria-hidden="true")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(data-dismiss="modal", ng-click="dismissModal()")
+                    span(aria-hidden="true") &times;
+                    span.sr-only Затвори
+                h4 Създай филтър
+            div.modal-body
+                form.form
+                    fieldset
+                        legend Име
+                        div.form-group
+                            label.col-md-2.control-label(for="name") Име
+                            input.form-control.input-sm(type="text", ng-model="shadesName")
+                        legend Задай типове
+                        div.form-group
+                            //label.col-md-2.control-label(for="textsCheckbox") Текст
+                            div.checkbox
+                                label.col-md-2.control-label(for="textsCheckbox") Текст
+                                input(type="checkbox", ng-model="includeTexts")
+                            //label.col-md-2.control-label(for="imagesCheckbox") Снимки
+                            div.checkbox
+                                label.col-md-2.control-label(for="imagesCheckbox") Снимки
+                                input(type="checkbox", ng-model="includeImages")
+                            //label.col-md-2.control-label(for="videosCheckbox") Видео
+                            div.checkbox
+                                label.col-md-2.control-label(for="videosCheckbox") Видео
+                                input(type="checkbox", ng-model="includeVideos")
+                        legend Задай потребители
+                        div.form-group(style="overflow: auto; max-height: 200px")
+                            //label.col-md-2.control-label {{f.username}}
+                            div.checkbox(ng-repeat="f in following")
+                                label.control-label(style="padding-right: 0px; margin-left: 10px") {{f.username}}
+                                input(type="checkbox", value="f.username", ng-model="f.isSelected", style="margin-left: 3px")
+            div.modal-footer
+                button.btn.btn-default(data-dismiss="modal", ng-click="dismissModal()") Затвори
+                button.btn.btn-primary(ng-click="createShades(shadesName, includeTexts, includeImages, includeVideos)") Създай
+
+
+
+
+

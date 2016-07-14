@@ -1,0 +1,36 @@
+
+ul.newsFeedList(ng-if="posts.length > 0")
+    li.col-md-offset-1.col-md-6(ng-repeat="post in posts")
+        .panel.panel-default
+            .panel-body
+                .media
+                    .media-body
+                        a(href="#/{{post.author}}")
+                            h4.media-heading {{'@' + post.author}}
+                        p.post(ng-bind-html="filterTags(post)")
+                        div(ng-show="!!post.image")
+                            img.img-rounded(ng-src="{{post.image}}")
+                        div(ng-show="!!post.video")
+                            video(controls, widht="400", height="500")
+                                source(src="{{post.video}}", type="video/mp4")
+                    div
+                        a.helper-link(href="javascript:;", ng-click="toggleFullState(post)") {{'Коментари (' + post.comments.length + ')'}}
+                        a.helper-link(href="javascript:;",ng-controller="postsController", ng-click="deletePost(post._id)", ng-if="post.author == Authentication.currentUser.username") Изтрий публикацията
+                    div(id="comments", ng-if="post.fullState")
+                        ul.comments-block.list-group
+                            li.list-group-item(ng-repeat="comment in post.comments")
+                                h5.list-group-item-heading
+                                    a(href="#/{{comment.author}}" ) {{'@' + comment.author}}
+                                p(ng-bind-html="comment.text")
+                                a.helper-link(style="margin-left: 5px", role="button", ng-controller="commentsController", ng-if="comment.author == Authentication.currentUser.username", ng-click="deleteComment(comment._id)") Изтрий
+                                br
+                        form.form-inline(ng-controller="commentsController")
+                            div.input-group
+                                input.form-control.input-sm(type="text", ng-model="commentText", placeholder="Type your comment here")
+                                span.input-group-btn
+                                    button.btn.btn-primary.btn-sm(ng-click="createComment(commentText, post._id)") Публикувай
+button.btn.btn-default.btn-block(ng-if="posts.length > 0", ng-click="loadMorePosts()") Зареди още публикации
+div(ng-hide="posts.length > 0 && shades.allShades.length != 0")
+    h2 Няма публикации за показване
+div(ng-show="shades.allShades.length == 0")
+    h2 За да започнете направети филтър

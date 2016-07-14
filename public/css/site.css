@@ -1,0 +1,51 @@
+.form-group{
+    margin-bottom: 40px;
+}
+.newsFeed{
+    margin-top: 70px;
+}
+.people-list{
+    list-style-type: none;
+}
+.photo-input{
+    visibility: hidden;
+}
+
+.newsFeedList{
+    list-style-type: none;
+}
+.chat-panel{
+    min-height: 400px;
+}
+.chat-message{
+    padding: 5px;
+    display: block;
+    clear: both;
+    margin-bottom: 5px;
+}
+.warning-message{
+    font-weight: bold;
+    color: red;
+    padding-top: 5px;
+}
+
+.post{
+    font-size: 16px;
+}
+
+.helper-link{
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.input-xs{
+    height: 12px;
+    line-height: 12px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.comments-block{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

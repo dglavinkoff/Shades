@@ -1,0 +1,24 @@
+{
+  "name": "shades",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dglavinkoff/Shades",
+  "authors": [
+    "Dimitar Glavinkov <dglavinkov@gmail.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "None",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-cookies": "~1.5.0",
+    "angular-resource": "~1.5.0",
+    "angular-file-upload": "~2.2.0",
+    "ng-file-upload": "~11.2.3",
+    "angular-socket-io": "~0.7.0",
+    "jquery": "~2.2.0",
+    "bootstrap": "~3.3.6"
+  }
+}

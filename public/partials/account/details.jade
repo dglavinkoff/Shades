@@ -1,0 +1,16 @@
+//
+   Created by DG on 9/21/14.
+.container
+    .row(style="margin-top: 100px")
+        h2 {{user.fullname + " "}}
+            small {{'@' + user.username}}
+    .row
+        p.lead {{user.bio}}
+    .row
+        span(ng-controller="profileController", style="margin-right: 15px")
+            a.btn.btn-primary(role="button", ng-if="!isFollowed(user.username) && user.username != Authentication.currentUser.username", ng-click="follow(user.username)") Следи
+            a.btn.btn-primary(role="button", ng-if="isFollowed(user.username) && user.username != Authentication.currentUser.username", ng-click="unfollow(user.username)") Не следи
+        span(ng-controller="profileController")
+            a.btn.btn-primary(role="button", ng-if="!isBlocked(user.username) && user.username != Authentication.currentUser.username", ng-click="block(user.username)") Блокирай
+            a.btn.btn-primary(role="button", ng-if="isBlocked(user.username) && user.username != Authentication.currentUser.username", ng-click="unblock(user.username)") Разреши достъп
+    .row(style="margin-top: 30px;", ng-include="'/partials/newsFeed/newsFeed'")

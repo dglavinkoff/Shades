@@ -1,0 +1,10 @@
+//
+   Created by DG on 10/17/14.
+.panel.panel-default
+    ul.list-group
+        li.list-group-item(ng-repeat="username in Authentication.currentUser.followers")
+            a(role="button", ng-click="loadMoreMessages(username)")
+                h4 {{username}}
+
+
+
